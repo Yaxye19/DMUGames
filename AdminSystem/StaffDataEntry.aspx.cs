@@ -19,10 +19,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsStaff StaffMember = new clsStaff();
         //capture the name
         StaffMember.Name = txtName.Text;
+        //capture the email
+        StaffMember.Email = txtEmail.Text;
         //capture the date of birth
         StaffMember.DateOfBirth = Convert.ToDateTime(txtDateOfBirth.Text);
-        //capture the address
-        StaffMember.Address = txtAddress.Text;
         //capture the role
         StaffMember.Role = txtRole.Text;
         //capture the houly wage

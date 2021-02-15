@@ -16,11 +16,11 @@
         <asp:Label ID="lblName" runat="server" Text="Name" width="88px"></asp:Label>
         <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
         <br />
+        <asp:Label ID="lblEmail" runat="server" Text="Email" width="88px"></asp:Label>
+        <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+        <br />
         <asp:Label ID="lblDateOfBirth" runat="server" Text="Date of Birth" width="88px"></asp:Label>
         <asp:TextBox ID="txtDateOfBirth" runat="server"></asp:TextBox>
-        <br />
-        <asp:Label ID="lblAddress" runat="server" Text="Address" width="88px"></asp:Label>
-        <asp:TextBox ID="txtAddress" runat="server"></asp:TextBox>
         <br />
         <asp:Label ID="lblRole" runat="server" Text="Role" width="88px"></asp:Label>
         <asp:TextBox ID="txtRole" runat="server"></asp:TextBox>
