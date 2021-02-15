@@ -115,7 +115,7 @@ namespace Testing3
             //Boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 StaffNo = 17;
+            Int32 StaffNo = 2;
             //invoke the method
             Found = StaffMember.Find(StaffNo);
             //test to see if the result is true
@@ -132,11 +132,11 @@ namespace Testing3
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffNo = 17;
+            Int32 StaffNo = 2;
             //invoke the method
             Found = StaffMember.Find(StaffNo);
             //check the staff no
-            if (StaffMember.StaffNo != 17)
+            if (StaffMember.StaffNo != 2)
             {
                 OK = false;
             }
@@ -154,7 +154,7 @@ namespace Testing3
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffNo = 17;
+            Int32 StaffNo = 2;
             //invoke the method
             Found = StaffMember.Find(StaffNo);
             //check the property
@@ -177,7 +177,7 @@ namespace Testing3
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffNo = 17;
+            Int32 StaffNo = 2;
             //invoke the method
             Found = StaffMember.Find(StaffNo);
             //check the property
@@ -199,7 +199,7 @@ namespace Testing3
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffNo = 17;
+            Int32 StaffNo = 2;
             //invoke the method
             Found = StaffMember.Find(StaffNo);
             //check the property
@@ -221,7 +221,7 @@ namespace Testing3
             //boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffNo = 17;
+            Int32 StaffNo = 2;
             //invoke the method
             Found = StaffMember.Find(StaffNo);
             //check the property
@@ -243,7 +243,7 @@ namespace Testing3
             //boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffNo = 17;
+            Int32 StaffNo = 2;
             //invoke the method
             Found = StaffMember.Find(StaffNo);
             //check the property
@@ -265,7 +265,7 @@ namespace Testing3
             //boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffNo = 17;
+            Int32 StaffNo = 2;
             //invoke the method
             Found = StaffMember.Find(StaffNo);
             //check the property
