@@ -16,10 +16,10 @@ public partial class _1Viewer : System.Web.UI.Page
         StaffMember = (clsStaff) Session["StaffMember"];
         //display the name for this entry
         Response.Write(StaffMember.Name);
+        //display the email for this entry
+        Response.Write(StaffMember.Email);
         //display the date of birth for this entry
         Response.Write(StaffMember.DateOfBirth);
-        //display the address for this entry
-        Response.Write(StaffMember.Address);
         //display the role for this entry
         Response.Write(StaffMember.Role);
         //display the hourly wage for this entry
