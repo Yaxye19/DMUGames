@@ -140,25 +140,5 @@ namespace ClassLibrary
                 return false;
             }
         }
-
-        public string Valid(string name, string email, string dateOfBirth, string role, string hourlyWage)
-        {
-            //create a string variable to store the error
-            String Error = "";
-            //if name is blank
-            if (name.Length == 0)
-            {
-                //record the error
-                Error = Error + "The name may not be blank : ";
-            }
-            //if the name is greater than 50 characters
-            if (name.Length > 50)
-            {
-                //record the error
-                Error = Error + "The maxmimum name length is 50 : ";
-            }
-            //return any error messages
-            return Error;
-        }
     }
 }
