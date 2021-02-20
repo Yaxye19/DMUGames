@@ -60,9 +60,9 @@ namespace ClassLibrary
             
 
         //CustomerID private member variable
-        private int mCustomerID;
+        private Int32 mCustomerID;
         //CustomerID public property
-        public int CustomerID
+        public Int32 CustomerID
         {
             get
             {
@@ -112,16 +112,32 @@ namespace ClassLibrary
         }
 
         public bool Find(int CustomerID)
-        {   //set the private data memebers to the test value
-
-            mCustomerID = 21;
-            mDateAdded = Convert.ToDateTime("15/02/2021");
-            mCustomerEmail = "yaxyeali12@outlook.com";
-            mCustomerName = "Yaxye";
-            mCustomerAddress = "7 Something Street LE1 2KA";
-            mUserNameAvailability = true;
-            //always return true
-            return true;
+        {
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the Customer ID number to search for
+            DB.AddParameter("@CustomerID", CustomerID);
+            //execute the stored procedure
+            DB.Execute("sproc_tblCustomer_FilterByCustomerID");
+            //if one record is found (there should be euther one or zero!)
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
+                mCustomerName = Convert.ToString(DB.DataTable.Rows[0]["CustomerName"]);
+                mCustomerEmail = Convert.ToString(DB.DataTable.Rows[0]["CustomerEmail"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
+                UserNameAvailability = Convert.ToBoolean(DB.DataTable.Rows[0]["UserNameAvailability"]);
+                mCustomerAddress = Convert.ToString(DB.DataTable.Rows[0]["CustomerAddress"]);
+                //return that everything worked
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false indicating a problem
+                return false;
+            }
         }
     }
 }

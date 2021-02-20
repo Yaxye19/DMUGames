@@ -73,7 +73,7 @@ namespace Testing2
 
             //create some test data to assign to the property
 
-            int TestData = 1;
+            Int32 TestData = 1;
 
             //assign the data to the property
 
@@ -141,7 +141,7 @@ namespace Testing2
 
             //create some test data to use with the method
 
-            int CustomerID = 21;
+            Int32 CustomerID = 21;
 
             //invoke the method
 
@@ -169,7 +169,7 @@ namespace Testing2
 
             //create some test data to use with the method
 
-            int CustomerID = 21;
+            Int32 CustomerID = 21;
 
             //invoke the method
 
@@ -205,7 +205,7 @@ namespace Testing2
 
             //create some test data to use with the method
 
-            int CustomerID = 21;
+            Int32 CustomerID = 21;
 
             //invoke the method
 
@@ -240,7 +240,7 @@ namespace Testing2
 
             //create some test data to use with the method
 
-            int CustomerID = 21;
+            Int32 CustomerID = 21;
 
             //invoke the method
 
@@ -275,7 +275,7 @@ namespace Testing2
 
             //create some test data to use with the method
 
-            int CustomerID = 21;
+            Int32 CustomerID = 21;
 
             //invoke the method
 
@@ -310,7 +310,7 @@ namespace Testing2
 
             //create some test data to use with the method
 
-            int CustomerID = 21;
+            Int32 CustomerID = 21;
 
             //invoke the method
 
@@ -345,7 +345,7 @@ namespace Testing2
 
             //create some test data to use with the method
 
-            int CustomerID = 21;
+            Int32 CustomerID = 21;
 
             //invoke the method
 
