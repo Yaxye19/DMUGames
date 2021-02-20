@@ -12,10 +12,10 @@
             <asp:TextBox ID="txtCustomerID" runat="server" style="z-index: 1; left: 80px; top: 15px; position: absolute"></asp:TextBox>
         </div>
         <asp:Label ID="CustomerName" runat="server" style="z-index: 1; left: 8px; top: 64px; position: absolute" Text="Name" width="79px"></asp:Label>
-        <asp:TextBox ID="txtCustomerName" runat="server" style="z-index: 1; left: 81px; top: 62px; position: absolute"></asp:TextBox>
+        <asp:TextBox ID="txtCustomerName" runat="server" style="z-index: 1; left: 81px; top: 62px; position: absolute" OnTextChanged="txtCustomerName_TextChanged"></asp:TextBox>
         <asp:Label ID="CustomerEmail" runat="server" style="z-index: 1; left: 5px; top: 106px; position: absolute" Text="Email" width="79px"></asp:Label>
         <asp:TextBox ID="txtCustomerEmail" runat="server" style="z-index: 1; left: 81px; top: 106px; position: absolute"></asp:TextBox>
-        <asp:Label ID="CustomerAddress" runat="server" style="z-index: 1; left: 7px; top: 159px; position: absolute; right: 387px" Text="Address" width="79px"></asp:Label>
+        <asp:Label ID="CustomerAddress" runat="server" style="z-index: 1; left: 7px; top: 159px; position: absolute; right: 387px; bottom: 478px;" Text="Address" width="79px"></asp:Label>
         <asp:TextBox ID="txtCustomerAddress" runat="server" style="z-index: 1; top: 158px; position: absolute; left: 81px"></asp:TextBox>
         <asp:Label ID="DateAdded" runat="server" style="z-index: 1; left: 9px; top: 210px; position: absolute" Text="Date Added" width="79px"></asp:Label>
         <asp:TextBox ID="txtDateAdded" runat="server" style="z-index: 1; left: 81px; top: 211px; position: absolute"></asp:TextBox>
@@ -24,6 +24,7 @@
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 7px; top: 333px; position: absolute" Text="OK" />
         <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 46px; top: 334px; position: absolute" Text="Cancel" />
         <asp:Label ID="CustomerID" runat="server" style="z-index: 1; left: 12px; top: 18px; position: absolute" Text="ID"></asp:Label>
+        <asp:Button ID="btnFind" runat="server" style="z-index: 1; left: 225px; top: 12px; position: absolute" Text="Find" OnClick="btnFind_Click1" />
     </form>
 </body>
 </html>
