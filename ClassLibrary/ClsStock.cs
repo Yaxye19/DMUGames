@@ -1,12 +1,19 @@
+﻿using System;
+
 namespace ClassLibrary
 {
-    public class ClsStock
+    public class clsStock
     {
-        public int GameNumber;
-        public string Name;
+        public int GameNumber { get; set; }
+        public string GameTitle { get; set; }
+        public DateTime DateAdded { get; set; }
+        public int GamePrice { get; set; }
+        public bool GameAvailability { get; set; }
 
-        public ClsStock()
+        public bool Find(int gameNumber)
         {
+            //always return true
+            return true;
         }
     }
 }
