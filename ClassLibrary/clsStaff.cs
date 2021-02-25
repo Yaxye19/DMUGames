@@ -145,7 +145,6 @@ namespace ClassLibrary
         {
             //create a string variable to store the error
             String Error = "";
-
             //create a temporary variable to store data values
             Double WageTemp;
 
@@ -168,7 +167,6 @@ namespace ClassLibrary
                 //record the error
                 Error = Error + "The email can not be blank : ";
             }
-
             //if email is greater than 50 characters
             if (email.Length > 50)
             {
@@ -176,9 +174,21 @@ namespace ClassLibrary
                 Error = Error + "The maximum email length is 50 : ";
             }
 
+            //if role is blank
+            if (role.Length == 0)
+            {
+                //record the error
+                Error = Error + "The role can not be blank : ";
+            }
+            //if role is greater than 50 characters
+            if (role.Length > 50)
+            {
+                //record the error
+                Error = Error + "The maximum role length is 50 : ";
+            }
+
             //copy the hourlyWage value to the WageTemp variable
             WageTemp = Convert.ToDouble(hourlyWage);
-
             //if wage is less than zero
             if (WageTemp < 0.00)
             {

@@ -538,6 +538,127 @@ namespace Testing3
         }
 
         [TestMethod]
+        public void RoleMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff StaffMember = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Role = ""; //this should trigger an error
+            //invoke the method
+            Error = StaffMember.Valid(Name, Email, DateOfBirth, Role, HourlyWage);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoleMin()
+        {
+            //create an instance of the class we want to create
+            clsStaff StaffMember = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Role = "a"; //this should trigger an error
+            //invoke the method
+            Error = StaffMember.Valid(Name, Email, DateOfBirth, Role, HourlyWage);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoleMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff StaffMember = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Role = "aa"; //this should trigger an error
+            //invoke the method
+            Error = StaffMember.Valid(Name, Email, DateOfBirth, Role, HourlyWage);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoleMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff StaffMember = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Role = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should trigger an error
+            //invoke the method
+            Error = StaffMember.Valid(Name, Email, DateOfBirth, Role, HourlyWage);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoleMax()
+        {
+            //create an instance of the class we want to create
+            clsStaff StaffMember = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Role = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should trigger an error
+            //invoke the method
+            Error = StaffMember.Valid(Name, Email, DateOfBirth, Role, HourlyWage);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoleMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStaff StaffMember = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Role = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should trigger an error
+            //invoke the method
+            Error = StaffMember.Valid(Name, Email, DateOfBirth, Role, HourlyWage);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoleMid()
+        {
+            //create an instance of the class we want to create
+            clsStaff StaffMember = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Role = "aaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should trigger an error
+            //invoke the method
+            Error = StaffMember.Valid(Name, Email, DateOfBirth, Role, HourlyWage);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoleExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsStaff StaffMember = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Role = ""; //this should trigger an error
+            Role = Role.PadRight(500, 'a');
+            //invoke the method
+            Error = StaffMember.Valid(Name, Email, DateOfBirth, Role, HourlyWage);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
         public void HourlyWageExtremeMin()
         {
             //create an instance of the class we want to create
