@@ -145,8 +145,8 @@ namespace ClassLibrary
         {
             //create a string variable to store the error
             String Error = "";
-
-            //create a temporary variable to store data values
+            //create temporary variables to store data values
+            DateTime DateTemp;
             Double WageTemp;
 
             //if name is blank
@@ -168,7 +168,6 @@ namespace ClassLibrary
                 //record the error
                 Error = Error + "The email can not be blank : ";
             }
-
             //if email is greater than 50 characters
             if (email.Length > 50)
             {
@@ -176,9 +175,44 @@ namespace ClassLibrary
                 Error = Error + "The maximum email length is 50 : ";
             }
 
+            try
+            {
+                //copy the dateOfBirth value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(dateOfBirth);
+                //if dateOfBirth is earlier than 01/01/1900
+                if (DateTemp < Convert.ToDateTime("01/01/1900"))
+                {
+                    //record the error
+                    Error = Error + "Earliest date of birth is 01/01/1900 : ";
+                }
+                //check that the staff member is at least 16 years old
+                if (DateTemp > DateTime.Now.Date.AddYears(-16))
+                {
+                    //record the error
+                    Error = Error + "Minimum age is 16 years old : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+
+            //if role is blank
+            if (role.Length == 0)
+            {
+                //record the error
+                Error = Error + "The role can not be blank : ";
+            }
+            //if role is greater than 50 characters
+            if (role.Length > 50)
+            {
+                //record the error
+                Error = Error + "The maximum role length is 50 : ";
+            }
+
             //copy the hourlyWage value to the WageTemp variable
             WageTemp = Convert.ToDouble(hourlyWage);
-
             //if wage is less than zero
             if (WageTemp < 0.00)
             {
