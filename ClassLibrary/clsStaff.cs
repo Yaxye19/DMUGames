@@ -211,18 +211,34 @@ namespace ClassLibrary
                 Error = Error + "The maximum role length is 50 : ";
             }
 
-            //copy the hourlyWage value to the WageTemp variable
-            WageTemp = Convert.ToDouble(hourlyWage);
-            //if wage is less than zero
-            if (WageTemp < 0.00)
+            try
             {
-                //record the error
-                Error = Error + "The hourly wage can not be a negative number : ";
+                //copy the hourlyWage value to the WageTemp variable
+                WageTemp = Convert.ToDouble(hourlyWage);
+                //if wage is less than zero
+                if (WageTemp < 0.00)
+                {
+                    //record the error
+                    Error = Error + "The hourly wage can not be a negative number : ";
+                }
+                //if they are earning more than 999.99 an hour
+                if (WageTemp > 999.99)
+                {
+                    Error = Error + "The maximum hourly wage is 999.99";
+                }
             }
-            //if they are earning more than 3 digits an hour
-            if (WageTemp >= 1000.00)
+            catch
             {
-                Error = Error + "The maximum hourly wage is 999.99";
+                if (hourlyWage == "")
+                {
+                    //record the error
+                    Error = Error + "The hourly wage can not be blank : ";
+                }
+                else
+                {
+                    //record the error
+                    Error = Error + "The hourly wage was not a valid wage : ";
+                }
             }
 
             //return any error messages

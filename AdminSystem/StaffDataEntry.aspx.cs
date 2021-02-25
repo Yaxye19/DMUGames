@@ -18,21 +18,43 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsStaff
         clsStaff StaffMember = new clsStaff();
         //capture the name
-        StaffMember.Name = txtName.Text;
+        string Name = txtName.Text;
         //capture the email
-        StaffMember.Email = txtEmail.Text;
+        string Email = txtEmail.Text;
         //capture the date of birth
-        StaffMember.DateOfBirth = Convert.ToDateTime(txtDateOfBirth.Text);
+        string DateOfBirth = txtDateOfBirth.Text;
         //capture the role
-        StaffMember.Role = txtRole.Text;
+        string Role = txtRole.Text;
         //capture the houly wage
-        StaffMember.HourlyWage = Convert.ToDouble(txtHourlyWage.Text);
-        //capture the holiday status
-        StaffMember.HolidayStatus = chkHolidayStatus.Checked;
-        //store the name in the session object
-        Session["StaffMember"] = StaffMember;
-        //navigate to the viewer page
-        Response.Redirect("StaffViewer.aspx");
+        string HourlyWage = txtHourlyWage.Text;
+        //variable to store any error messages
+        string Error = "";
+        //validate the data
+        Error = StaffMember.Valid(Name, Email, DateOfBirth, Role, HourlyWage);
+        if(Error == "")
+        {
+            //capture the name
+            StaffMember.Name = Name;
+            //capture the email
+            StaffMember.Email = Email;
+            //capture the date of birth
+            StaffMember.DateOfBirth = Convert.ToDateTime(DateOfBirth);
+            //capture the role
+            StaffMember.Role = Role;
+            //capture the hourly wage
+            StaffMember.HourlyWage = Convert.ToDouble(HourlyWage);
+            //capture the holiday status
+            StaffMember.HolidayStatus = chkHolidayStatus.Checked;
+            //store the staff member in the session object
+            Session["StaffMember"] = StaffMember;
+            //navigate to the viewer page
+            Response.Redirect("StaffViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
