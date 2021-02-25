@@ -145,7 +145,8 @@ namespace ClassLibrary
         {
             //create a string variable to store the error
             String Error = "";
-            //create a temporary variable to store data values
+            //create temporary variables to store data values
+            DateTime DateTemp;
             Double WageTemp;
 
             //if name is blank
@@ -172,6 +173,29 @@ namespace ClassLibrary
             {
                 //record the error
                 Error = Error + "The maximum email length is 50 : ";
+            }
+
+            try
+            {
+                //copy the dateOfBirth value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(dateOfBirth);
+                //if dateOfBirth is earlier than 01/01/1900
+                if (DateTemp < Convert.ToDateTime("01/01/1900"))
+                {
+                    //record the error
+                    Error = Error + "Earliest date of birth is 01/01/1900 : ";
+                }
+                //check that the staff member is at least 16 years old
+                if (DateTemp > DateTime.Now.Date.AddYears(-16))
+                {
+                    //record the error
+                    Error = Error + "Minimum age is 16 years old : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
             }
 
             //if role is blank
