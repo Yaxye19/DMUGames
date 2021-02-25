@@ -9,7 +9,6 @@ namespace Testing3
     {
 
         //good test data
-        string StaffNo = "2";
         string Name = "Tom Tinsley";
         string Email = "tomtinsley@testmail.com";
         string DateOfBirth = "01/01/2000";
