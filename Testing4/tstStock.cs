@@ -47,7 +47,7 @@ namespace Testing4
         {
             //create an instance of the class we want to create
             clsStock GameStock = new clsStock();
-            DateTime TestData = DateTime.Now { 17 / 02 / 2022; } 
+            DateTime TestData = DateTime.Now.Date;
             //assign the data to the property
             GameStock.DateAdded = TestData;
             //test to see that the two values are the same
@@ -123,6 +123,34 @@ namespace Testing4
 
 
         }
+
+        [TestMethod]
+        public void TestDateAddedFound()
+        {
+            //create an instance of the class we want to create
+            clsStock GameStock = new clsStock();
+            //bollean variableto store the results of the search
+            Boolean Found = false;
+            //bollean variable to store record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 GameNumber = 21;
+            // invoke the method
+            Found = GameStock.Find(GameNumber);
+            //check the address no 
+            if (GameStock.DateAdded != Convert.ToDateTime("17/02/2022"))
+            {
+                OK = false;
+            }
+
+            //test to see if the result is true
+            Assert.IsTrue(OK);
+
+
+
+        }
+
+
 
 
     }
