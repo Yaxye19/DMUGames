@@ -961,5 +961,20 @@ namespace Testing3
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
+
+        [TestMethod]
+        public void HourlyWageInvalidData()
+        {
+            //create an instance of the class we want to create
+            clsStaff StaffMember = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //set the DateOfBirth to a non date value
+            string HourlyWage = "Not a number";
+            //invoke the method
+            Error = StaffMember.Valid(Name, Email, DateOfBirth, Role, HourlyWage);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
     }
 }
