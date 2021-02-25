@@ -9,7 +9,6 @@ namespace Testing3
     {
 
         //good test data
-        string StaffNo = "2";
         string Name = "Tom Tinsley";
         string Email = "tomtinsley@testmail.com";
         string DateOfBirth = "01/01/2000";
@@ -957,6 +956,21 @@ namespace Testing3
             String Error = "";
             //create some test data to pass to the method
             string HourlyWage = "100000000000000.00"; //this should trigger an error
+            //invoke the method
+            Error = StaffMember.Valid(Name, Email, DateOfBirth, Role, HourlyWage);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void HourlyWageInvalidData()
+        {
+            //create an instance of the class we want to create
+            clsStaff StaffMember = new clsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //set the DateOfBirth to a non date value
+            string HourlyWage = "Not a number";
             //invoke the method
             Error = StaffMember.Valid(Name, Email, DateOfBirth, Role, HourlyWage);
             //test to see that the result is correct
