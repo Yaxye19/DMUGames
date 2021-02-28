@@ -52,7 +52,7 @@ namespace Testing2
 
             //create some test data to assign to the property
 
-            string TestData = "7 something Street LE1 2JA";
+            string TestData = "7 Random Street";
 
             //assign the data to the property
 
@@ -141,7 +141,7 @@ namespace Testing2
 
             //create some test data to use with the method
 
-            Int32 CustomerID = 21;
+            Int32 CustomerID = 1;
 
             //invoke the method
 
@@ -169,7 +169,7 @@ namespace Testing2
 
             //create some test data to use with the method
 
-            Int32 CustomerID = 21;
+            Int32 CustomerID = 1;
 
             //invoke the method
 
@@ -177,7 +177,7 @@ namespace Testing2
 
             //check the address
 
-            if (ACustomer.CustomerID != 21)
+            if (ACustomer.CustomerID != 1)
             {
                 OK = false;
             }
@@ -205,7 +205,7 @@ namespace Testing2
 
             //create some test data to use with the method
 
-            Int32 CustomerID = 21;
+            Int32 CustomerID = 1;
 
             //invoke the method
 
@@ -240,7 +240,7 @@ namespace Testing2
 
             //create some test data to use with the method
 
-            Int32 CustomerID = 21;
+            Int32 CustomerID = 1;
 
             //invoke the method
 
@@ -275,7 +275,7 @@ namespace Testing2
 
             //create some test data to use with the method
 
-            Int32 CustomerID = 21;
+            Int32 CustomerID = 1;
 
             //invoke the method
 
@@ -310,7 +310,7 @@ namespace Testing2
 
             //create some test data to use with the method
 
-            Int32 CustomerID = 21;
+            Int32 CustomerID = 1;
 
             //invoke the method
 
@@ -318,7 +318,7 @@ namespace Testing2
 
             //check the property
 
-            if (ACustomer.CustomerAddress != "7 Something Street LE1 2KA")
+            if (ACustomer.CustomerAddress != "7 Random Street")
             {
                 OK = false;
             }
@@ -345,7 +345,7 @@ namespace Testing2
 
             //create some test data to use with the method
 
-            Int32 CustomerID = 21;
+            Int32 CustomerID = 1;
 
             //invoke the method
 
