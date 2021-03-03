@@ -39,6 +39,7 @@ namespace ClassLibrary
                
         public Int32 GamePrice { get; set; }
         public bool GameAvailability { get; set; }
+        public string GameDescription { get; set; }
 
         public bool Find(int gameNumber)
         {
