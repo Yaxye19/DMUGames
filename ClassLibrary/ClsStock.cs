@@ -19,7 +19,23 @@ namespace ClassLibrary
                 mGameNumber = value;
             }
         }
-        public string GameTitle { get; set; }
+
+
+        //private data member for the GameTitle
+        public string mGameTitle;
+        public string GameTitle
+        {
+            get
+            {
+                //return the private data 
+                return mGameTitle;
+            }
+            set
+            {
+                //set the value of the private data member 
+                mGameTitle = value;
+            }
+        }
 
         //private data added data member 
         private DateTime mDateAdded;
@@ -36,15 +52,67 @@ namespace ClassLibrary
                 mDateAdded = value;
             }
         }
-               
-        public Int32 GamePrice { get; set; }
-        public bool GameAvailability { get; set; }
-        public string GameDescription { get; set; }
+
+        //private data member for GamePrice
+        public Int32 mGamePrice;
+        //public property for GamePrice
+        public int GamePrice
+        {
+            get
+            {
+                //return the private data 
+                return mGamePrice;
+            }
+            set
+            {
+                //set the private data 
+                mGamePrice = value;
+            }
+        }
+
+        //private data member for Game availability 
+        public bool mGameAvailability;
+        //public property for Game availability
+        public bool GameAvailability
+        {
+            get
+            {
+                //return the private data 
+                return mGameAvailability;
+            }
+            set
+            {
+                //set the private data 
+                mGameAvailability = value;
+            }
+        }
+
+        //private data memeber for Game Description 
+        public string mGameDescription;
+        //public property for Game Description 
+        public string GameDescription
+        {
+            get
+            {
+                //return the private data 
+                return mGameDescription;
+            }
+            set
+            {
+                //set the private data 
+                mGameDescription = value;
+            }
+        }
+            
 
         public bool Find(int gameNumber)
         {
             //set the private data member to the test data value
             mGameNumber = 21;
+            mGameTitle = " roadrunner ";
+            mGameDescription = " RUNNING FROM WOLF TO SAVE LIFE  ";
+            mGamePrice = 49;
+            mGameAvailability = true;
             mDateAdded = Convert.ToDateTime("17/02/2022");
             //always return true
             return true;
