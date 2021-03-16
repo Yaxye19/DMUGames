@@ -120,5 +120,36 @@ namespace Testing3
             //test to see that the two values are the same
             Assert.AreEqual(AllStaff.ThisStaffMember, TestItem);
         }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            clsStaff TestItem = new clsStaff();
+            Int32 PrimaryKey = 0;
+            TestItem.Name = "Smack Trench";
+            TestItem.Email = "djtenchy@blueyonder.co.uk";
+            TestItem.DateOfBirth = Convert.ToDateTime("31/08/2000");
+            TestItem.Role = "Plumber";
+            TestItem.HourlyWage = 10.00;
+            TestItem.HolidayStatus = true;
+
+            AllStaff.ThisStaffMember = TestItem;
+
+            PrimaryKey = AllStaff.Add();
+            TestItem.StaffNo = PrimaryKey;
+            //modify the test data
+            TestItem.Name = "Jack Tench";
+            TestItem.Email = "itstenchy@yahoo.com";
+            TestItem.DateOfBirth = Convert.ToDateTime("01/09/2000");
+            TestItem.Role = "Plumbers Assistant";
+            TestItem.HourlyWage = 8.00;
+            TestItem.HolidayStatus = false;
+
+            AllStaff.ThisStaffMember = TestItem;
+            AllStaff.Update();
+            AllStaff.ThisStaffMember.Find(PrimaryKey);
+            Assert.AreEqual(AllStaff.ThisStaffMember, TestItem);
+        }
     }
 }

@@ -102,5 +102,18 @@ namespace ClassLibrary
             //execute the query returning the primary key value
             return DB.Execute("sproc_tblStaff_Insert");
         }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@StaffNo", mThisStaffMember.StaffNo);
+            DB.AddParameter("@Name", mThisStaffMember.Name);
+            DB.AddParameter("@Email", mThisStaffMember.Email);
+            DB.AddParameter("@DateOfBirth", mThisStaffMember.DateOfBirth);
+            DB.AddParameter("@Role", mThisStaffMember.Role);
+            DB.AddParameter("@HourlyWage", mThisStaffMember.HourlyWage);
+            DB.AddParameter("@HolidayStatus", mThisStaffMember.HolidayStatus);
+            DB.Execute("sproc_tblStaff_Update");
+        }
     }
 }
