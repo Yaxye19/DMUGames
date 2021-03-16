@@ -8,9 +8,37 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //variable to store the primary key with page level scope
+    Int32 StaffNo;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of the address to be processed
+        StaffNo = Convert.ToInt32(Session["StaffNo"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (StaffNo != -1)
+            {
+                //display the current data for the record
+                DisplayStaffMember();
+            }
+        }
+    }
 
+    void DisplayStaffMember()
+    {
+        //create an instance of the staff list
+        clsStaffCollection StaffList = new clsStaffCollection();
+        //find the record to update
+        StaffList.ThisStaffMember.Find(StaffNo);
+        //display the data for this record
+        txtStaffNo.Text = StaffList.ThisStaffMember.StaffNo.ToString();
+        txtName.Text = StaffList.ThisStaffMember.Name;
+        txtEmail.Text = StaffList.ThisStaffMember.Email;
+        txtDateOfBirth.Text = StaffList.ThisStaffMember.DateOfBirth.ToString();
+        txtRole.Text = StaffList.ThisStaffMember.Role;
+        txtHourlyWage.Text = StaffList.ThisStaffMember.HourlyWage.ToString();
+        chkHolidayStatus.Checked = StaffList.ThisStaffMember.HolidayStatus;
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -33,6 +61,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = StaffMember.Valid(Name, Email, DateOfBirth, Role, HourlyWage);
         if(Error == "")
         {
+            //capture the staff no
+            StaffMember.StaffNo = StaffNo;
             //capture the name
             StaffMember.Name = Name;
             //capture the email
@@ -47,10 +77,25 @@ public partial class _1_DataEntry : System.Web.UI.Page
             StaffMember.HolidayStatus = chkHolidayStatus.Checked;
             //create a new instance of the staff collection
             clsStaffCollection StaffList = new clsStaffCollection();
-            //set the ThisStaffMember property
-            StaffList.ThisStaffMember = StaffMember;
-            //add the new record
-            StaffList.Add();
+
+            //if this is a new record then add the data
+            if (StaffNo == -1)
+            {
+                //set the ThisStaffMember property
+                StaffList.ThisStaffMember = StaffMember;
+                //add the new record
+                StaffList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                StaffList.ThisStaffMember.Find(StaffNo);
+                //set the ThisStaffMember property
+                StaffList.ThisStaffMember = StaffMember;
+                //update the record
+                StaffList.Update();
+            }
             //redirect back to the listpage
             Response.Redirect("StaffList.aspx");
         }
