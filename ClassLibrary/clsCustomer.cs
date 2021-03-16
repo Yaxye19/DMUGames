@@ -5,19 +5,19 @@ namespace ClassLibrary
     public class clsCustomer
     {
         //private data for UserNameAvailability
-        private Boolean mUserNameAvailability;
+        private Boolean mUsernameAvailability;
         //public property for UserNameAvailability
-        public bool UserNameAvailability
+        public bool UsernameAvailability
         {
             get
             {
                 //return the private data
-                return mUserNameAvailability;
+                return mUsernameAvailability;
             }
             set
             {
                 //set the private data
-                mUserNameAvailability = value;
+                mUsernameAvailability = value;
             }
         }
         
@@ -127,7 +127,7 @@ namespace ClassLibrary
                 mCustomerName = Convert.ToString(DB.DataTable.Rows[0]["CustomerName"]);
                 mCustomerEmail = Convert.ToString(DB.DataTable.Rows[0]["CustomerEmail"]);
                 mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
-                UserNameAvailability = Convert.ToBoolean(DB.DataTable.Rows[0]["UserNameAvailability"]);
+                UsernameAvailability = Convert.ToBoolean(DB.DataTable.Rows[0]["UserNameAvailability"]);
                 mCustomerAddress = Convert.ToString(DB.DataTable.Rows[0]["CustomerAddress"]);
                 //return that everything worked
                 return true;
@@ -138,6 +138,73 @@ namespace ClassLibrary
                 //return false indicating a problem
                 return false;
             }
+        }
+
+        public string Valid(string customerName, string customerEmail, string customerAddress, string dateAdded)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //create a temporary variable to store date values
+            DateTime DateTemp;
+            //if the CustomerName is blank
+            if(customerName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The customer name may not be blank : ";
+            }
+            //if the customer name is greater than 50 characters
+            if(customerName.Length > 50)
+            {
+                //record the error
+                Error = Error + "The customer name must be less than 50 characters : ";
+            }
+            try
+            {
+                //copy the dateAdded value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(dateAdded);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past ;";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future: ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date: ";
+            }
+            //is the customer email blank
+            if(customerEmail.Length == 0)
+            {
+                //record the error
+                Error = Error + "The customer email may not be blank : ";
+            }
+            //if the customer email is too long 
+            if(customerEmail.Length > 50)
+            {
+                //record the error
+                Error = Error + "The customer email must be less than 50 characters; ";
+            }
+            //is the customerAddress blank
+            if(customerAddress.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Customer Address may not be blank : ";
+            }
+            //if the customer address is too long
+            if(customerAddress.Length > 50)
+            {
+                //record the error 
+                Error = Error + "The customer address must be less than 50 characters : ";
+            }
+            //return any error messages
+            return Error;
         }
     }
 }
