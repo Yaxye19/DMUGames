@@ -9,8 +9,13 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:ListBox ID="lstStaffMembers" runat="server" Height="348px" Width="335px"></asp:ListBox>
         </div>
+        <p>
+            <asp:ListBox ID="lstStaffMembers" runat="server" Height="348px" Width="335px"></asp:ListBox>
+        </p>
+        <p>
+            <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
+        </p>
     </form>
 </body>
 </html>
