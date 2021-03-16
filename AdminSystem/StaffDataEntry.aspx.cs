@@ -45,10 +45,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
             StaffMember.HourlyWage = Convert.ToDouble(HourlyWage);
             //capture the holiday status
             StaffMember.HolidayStatus = chkHolidayStatus.Checked;
-            //store the staff member in the session object
-            Session["StaffMember"] = StaffMember;
-            //navigate to the viewer page
-            Response.Redirect("StaffViewer.aspx");
+            //create a new instance of the staff collection
+            clsStaffCollection StaffList = new clsStaffCollection();
+            //set the ThisStaffMember property
+            StaffList.ThisStaffMember = StaffMember;
+            //add the new record
+            StaffList.Add();
+            //redirect back to the listpage
+            Response.Redirect("StaffList.aspx");
         }
         else
         {
