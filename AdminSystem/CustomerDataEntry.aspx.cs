@@ -17,11 +17,38 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {   //create a new instance of clsCustomer
         clsCustomer ACustomer = new clsCustomer();
         //capture the name 
-        ACustomer.CustomerName = txtCustomerName.Text;
+        string CustomerName = txtCustomerName.Text;
+        //capture the email
+        string CustomerEmail = txtCustomerEmail.Text;
+        //capture the Address
+        string CustomerAddress = txtCustomerAddress.Text;
+        //capture the date added
+        string DateAdded = txtDateAdded.Text;
         //store the customer in the session object
-        Session["ACustomer"] = ACustomer;
-        //navigate to the viewer page
-        Response.Redirect("CustomerViewer.aspx");
+        //variable to store any error messages
+        string Error = "";
+        //validate the data
+        Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerAddress, DateAdded);
+        if(Error == "")
+        {
+            //capture the customer name
+            ACustomer.CustomerName = CustomerName;
+            //capture the email
+            ACustomer.CustomerEmail = CustomerEmail;
+            //capture the customer address
+            ACustomer.CustomerAddress = CustomerAddress;
+            //capture the date added
+            ACustomer.DateAdded = Convert.ToDateTime(DateAdded);
+            //store the customer in the session object
+            Session["ACustomer"] = ACustomer;
+            //redirect to the viewer page
+            Response.Write("CustomerViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
     protected void txtCustomerID_TextChanged(object sender, EventArgs e)

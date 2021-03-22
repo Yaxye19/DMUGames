@@ -25,7 +25,7 @@ namespace Testing2
 
         [TestMethod]
 
-        public void UserNameAvailabilityOK()
+        public void UsernameAvailabilityOK()
         {
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
