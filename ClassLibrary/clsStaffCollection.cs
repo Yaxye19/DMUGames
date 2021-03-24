@@ -115,5 +115,16 @@ namespace ClassLibrary
             DB.AddParameter("@HolidayStatus", mThisStaffMember.HolidayStatus);
             DB.Execute("sproc_tblStaff_Update");
         }
+
+        public void Delete()
+        {
+            //deletes the record pointed by thisStaffMember
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@StaffNo", mThisStaffMember.StaffNo);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStaff_Delete");
+        }
     }
 }
