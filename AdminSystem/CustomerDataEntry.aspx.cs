@@ -39,10 +39,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
             ACustomer.CustomerAddress = CustomerAddress;
             //capture the date added
             ACustomer.DateAdded = Convert.ToDateTime(DateAdded);
-            //store the customer in the session object
-            Session["ACustomer"] = ACustomer;
-            //redirect to the viewer page
-            Response.Write("CustomerViewer.aspx");
+            //capture usernameavailability
+            ACustomer.UsernameAvailability = chkUserNameAvailability.Checked;
+            //create a new instance of the customer collection
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+            //set the ThisCustomer property
+            CustomerList.ThisCustomer = ACustomer;
+            //add the new record
+            CustomerList.Add();
+            //redirect to the listpage
+            Response.Redirect("CustomerList.aspx");
         }
         else
         {

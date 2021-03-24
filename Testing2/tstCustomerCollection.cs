@@ -92,6 +92,105 @@ namespace Testing2
             Assert.AreEqual(AllCustomers.Count, TestList.Count);
         }
 
+        [TestMethod]
+        public void AddMethod()
+        {
+            //create an instance of the class we want to create
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create the item of test data
+            clsCustomer TestItem = new clsCustomer();
+            //var to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.UsernameAvailability = true;
+            TestItem.CustomerID = 9;
+            TestItem.DateAdded = DateTime.Now.Date;
+            TestItem.CustomerName = "Ali";
+            TestItem.CustomerEmail = "ali12@outlook.com";
+            TestItem.CustomerAddress = "9 Random Street";
+            //set ThisCustomer to the test data
+            AllCustomers.ThisCustomer = TestItem;
+            //add the record
+            PrimaryKey = AllCustomers.Add();
+            //set the primary key of the test data
+            TestItem.CustomerID = PrimaryKey;
+            //find the record
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
+        }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create the item of test data
+            clsCustomer TestItem = new clsCustomer();
+            //var to store the prinary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.UsernameAvailability = true;
+            TestItem.CustomerID = 9;
+            TestItem.DateAdded = DateTime.Now.Date;
+            TestItem.CustomerName = "Ali";
+            TestItem.CustomerEmail = "ali12@outlook.com";
+            TestItem.CustomerAddress = "9 Random Street";
+            //set ThisCustomer to the test data
+            AllCustomers.ThisCustomer = TestItem;
+            //add the record
+            PrimaryKey = AllCustomers.Add();
+            //set the primary key of the test data
+            TestItem.CustomerID = PrimaryKey;
+            //modify the test data
+            TestItem.UsernameAvailability = true;
+            TestItem.CustomerID = 11;
+            TestItem.DateAdded = DateTime.Now.Date;
+            TestItem.CustomerName = "AnotherGuy";
+            TestItem.CustomerEmail = "AnotherGuy@outlook.com";
+            TestItem.CustomerAddress = "98 Random Street";
+            //set the record based on the new test data
+            AllCustomers.ThisCustomer = TestItem;
+            //update the record
+            AllCustomers.Update();
+            //find the record
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //test to see ThisCustomer matches the test data
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
+        }
+
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create the item of test data
+            clsCustomer TestItem = new clsCustomer();
+            //var to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.UsernameAvailability = true;
+            TestItem.CustomerID = 1;
+            TestItem.CustomerName = "Yaxye";
+            TestItem.CustomerEmail = "yaxyeali12@outlook.com";
+            TestItem.CustomerAddress = "7 Random Street ";
+            TestItem.DateAdded = DateTime.Now.Date;
+            //set ThisCustomer to the test data
+            AllCustomers.ThisCustomer = TestItem;
+            //add the record
+            PrimaryKey = AllCustomers.Add();
+            //set the primary key of the test data
+            TestItem.CustomerID = PrimaryKey;
+            //find the record
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //delete the record
+            AllCustomers.Delete();
+            //now find the record
+            Boolean Found = AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(Found);
+        }
+
 
     }
 }
