@@ -182,5 +182,18 @@ namespace Testing3
             //test to see that the record was not found
             Assert.IsFalse(Found);
         }
+
+        [TestMethod]
+        public void ReportByNameMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            //create an instance of the filtered data
+            clsStaffCollection FilteredStaffMembers = new clsStaffCollection();
+            //apply a blank string (should return all records)
+            FilteredStaffMembers.ReportByName("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllStaff.Count, FilteredStaffMembers.Count);
+        }
     }
 }
