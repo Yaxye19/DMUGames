@@ -42,6 +42,27 @@ public partial class _1_List : System.Web.UI.Page
         Response.Redirect("StaffDataEntry.aspx");
     }
 
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        //var to store the primary key value of the record to be deleted
+        Int32 StaffNo;
+        //if a record has been selected from the list
+        if (lstStaffMembers.SelectedIndex != -1)
+        {
+            //get the primary key value of the record to edit
+            StaffNo = Convert.ToInt32(lstStaffMembers.SelectedValue);
+            //store the data in the session object
+            Session["StaffNo"] = StaffNo;
+            //redirect to the edit page
+            Response.Redirect("StaffDelete.aspx");
+        }
+        else
+        {
+            //display an error
+            lblError.Text = "Please select a record to delete from the list";
+        }
+    }
+
     protected void btnEdit_Click(object sender, EventArgs e)
     {
         //var to store the primary key value of the record to be edited
