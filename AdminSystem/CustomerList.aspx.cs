@@ -7,7 +7,8 @@ using System.Web.UI.WebControls;
 using ClassLibrary;
 
 public partial class _1_List : System.Web.UI.Page
-{   
+{
+    
     protected void Page_Load(object sender, EventArgs e)
     {
         //if this is the first time the page is displayed
@@ -58,7 +59,7 @@ public partial class _1_List : System.Web.UI.Page
         else //if no record has been selected
         {
             //display an error
-            //lblError.Text = "Please select a record to delete from the list";
+            lblError.Text = "Please select a record to delete from the list";
         }
     }
 
@@ -74,12 +75,12 @@ public partial class _1_List : System.Web.UI.Page
             //store the data in the session object
             Session["CustomerID"] = CustomerID;
             //redirect to the delete page
-            Response.Redirect("DeleteCustomer.aspx");
+            Response.Redirect("CustomerDelete.aspx");
         }
         else //if no record has been selected
         {
             //display an error
-            //lblError.Text = "Please select a record to delete from the list";
+            lblError.Text = "Please select a record to delete from the list";
         }
     }
 
