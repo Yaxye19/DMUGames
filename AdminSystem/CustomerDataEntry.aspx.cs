@@ -7,10 +7,36 @@ using System.Web.UI.WebControls;
 using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
-{
+{   //variable to store the primary key with page level scope
+    Int32 CustomerID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of the address to be processed
+        CustomerID = Convert.ToInt32(Session["CustomerID"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (CustomerID != -1)
+            {
+                //display the current data for the record
+                DisplayCustomer();
+            }
+        }
+    }
 
+    void DisplayCustomer()
+    {
+        //create an instance of the customer list
+        clsCustomerCollection CustomerList = new clsCustomerCollection();
+        //find the record to update
+        CustomerList.ThisCustomer.Find(CustomerID);
+        //display the data for this record
+        txtCustomerID.Text = CustomerList.ThisCustomer.CustomerID.ToString();
+        txtCustomerName.Text = CustomerList.ThisCustomer.CustomerName;
+        txtCustomerEmail.Text = CustomerList.ThisCustomer.CustomerEmail;
+        txtCustomerAddress.Text = CustomerList.ThisCustomer.CustomerAddress;
+        txtDateAdded.Text = CustomerList.ThisCustomer.DateAdded.ToString();
+        chkUserNameAvailability.Checked = CustomerList.ThisCustomer.UsernameAvailability;
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -31,6 +57,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = ACustomer.Valid(CustomerName, CustomerEmail, CustomerAddress, DateAdded);
         if(Error == "")
         {
+            //capture the customer ID
+            ACustomer.CustomerID = CustomerID;
             //capture the customer name
             ACustomer.CustomerName = CustomerName;
             //capture the email
@@ -43,11 +71,26 @@ public partial class _1_DataEntry : System.Web.UI.Page
             ACustomer.UsernameAvailability = chkUserNameAvailability.Checked;
             //create a new instance of the customer collection
             clsCustomerCollection CustomerList = new clsCustomerCollection();
-            //set the ThisCustomer property
-            CustomerList.ThisCustomer = ACustomer;
-            //add the new record
-            CustomerList.Add();
-            //redirect to the listpage
+
+            //if this is a new record then add the data
+            if (CustomerID == -1)
+            {
+                //set the ThisStaffMember property
+                CustomerList.ThisCustomer = ACustomer;
+                //add the new record
+                CustomerList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                CustomerList.ThisCustomer.Find(CustomerID);
+                //set the ThisStaffMember property
+                CustomerList.ThisCustomer = ACustomer;
+                //update the record
+                CustomerList.Update();
+            }
+            //redirect back to the listpage
             Response.Redirect("CustomerList.aspx");
         }
         else
@@ -57,22 +100,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
     }
 
-    protected void txtCustomerID_TextChanged(object sender, EventArgs e)
-    {
 
-    }
 
-    protected void txtCustomerName_TextChanged(object sender, EventArgs e)
-    {
-
-    }
 
     protected void btnFind_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void btnFind_Click1(object sender, EventArgs e)
     {
         //create an instance of the customer class
         clsCustomer ACustomer = new clsCustomer();
@@ -92,6 +123,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtCustomerEmail.Text = ACustomer.CustomerEmail;
             txtCustomerName.Text = ACustomer.CustomerName;
             txtDateAdded.Text = ACustomer.DateAdded.ToString();
+            chkUserNameAvailability.Checked = ACustomer.UsernameAvailability;
         }
+    }
+
+    protected void txtCustomerName_TextChanged(object sender, EventArgs e)
+    {
+
     }
 }
