@@ -9,8 +9,8 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Label ID="lblGameNo" runat="server" Text="Game Number"></asp:Label>
-            <asp:TextBox ID="txtGameNo" runat="server"></asp:TextBox>
+            <asp:Label ID="lblGameNumber" runat="server" Text="Game Number"></asp:Label>
+            <asp:TextBox ID="txtGameNumber" runat="server"></asp:TextBox>
         </div>
         <asp:Label ID="lblGameTitle" runat="server" Text="Game Title" width="184px"></asp:Label>
         <asp:TextBox ID="txtGameTitle" runat="server"></asp:TextBox>
