@@ -11,20 +11,20 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //create a new instance of clsAddress
-        clsStock Gamestock = new clsStock();
+        clsStock GameStock = new clsStock();
         //get the data from the session object 
-        Gamestock = (clsStock)Session["AnAddress"];
+        GameStock = (clsStock)Session["GameStock"];
         //display the game number on page
-        Response.Write(Gamestock.GameNumber);
+        Response.Write(GameStock.GameNumber);
 
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
-        //creat a new instance of clsAddress
+        //create a new instance of clsAddress
         clsStock GameStock = new clsStock();
         //capture the game number 
-        GameStock.GameNumber = txtGameNo.Text;
+        GameStock.GameNumber = Convert.ToInt32(txtGameNumber.Text);
         //store the address in the session  object
         Session["GameStock"] =GameStock;
         //navigate to the viewer page 

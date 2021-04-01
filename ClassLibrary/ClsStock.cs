@@ -109,8 +109,8 @@ namespace ClassLibrary
         {
             //set the private data member to the test data value
             mGameNumber = 21;
-            mGameTitle = " roadrunner ";
-            mGameDescription = " RUNNING FROM WOLF TO SAVE LIFE  ";
+            mGameTitle = " road runner ";
+            mGameDescription = "RUNNING FROM WOLF TO SAVE LIFE" ;
             mGamePrice = 49;
             mGameAvailability = true;
             mDateAdded = Convert.ToDateTime("17/02/2022");
