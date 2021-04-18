@@ -90,4 +90,41 @@ public partial class _1_List : System.Web.UI.Page
     {
 
     }
+
+
+
+
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        //create an instance of the customer collection
+        clsCustomerCollection Customers = new clsCustomerCollection();
+        Customers.ReportByCustomerEmail(txtFilter.Text);
+        lstCustomers.DataSource = Customers.CustomerList;
+        //set the name of the primary key
+        lstCustomers.DataValueField = "CustomerID";
+        //set the name of the field to display
+        lstCustomers.DataTextField = "CustomerEmail";
+        //bind the data to the list
+        lstCustomers.DataBind();
+
+    }
+
+
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        //create an instance of the customer collection
+        clsCustomerCollection Customers = new clsCustomerCollection();
+        Customers.ReportByCustomerEmail("");
+        //clear any existing filter to tidy up the interface
+        txtFilter.Text = "";
+        lstCustomers.DataSource = Customers.CustomerList;
+        //set the name of the primary key
+        lstCustomers.DataValueField = "CustomerID";
+        //set the name of the field to display
+        lstCustomers.DataTextField = "CustomerEmail";
+        //bind the data to the list
+        lstCustomers.DataBind();
+    }
 }
