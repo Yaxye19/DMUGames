@@ -131,4 +131,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
 
     }
+
+    protected void txtCustomerID_TextChanged(object sender, EventArgs e)
+    {
+
+    }
 }
