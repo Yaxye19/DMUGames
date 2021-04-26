@@ -195,5 +195,42 @@ namespace Testing3
             //test to see that the two values are the same
             Assert.AreEqual(AllStaff.Count, FilteredStaffMembers.Count);
         }
+
+        [TestMethod]
+        public void ReportByNameNoneFound()
+        {
+            //create an instance of the filtered data
+            clsStaffCollection FilteredStaffMembers = new clsStaffCollection();
+            //apply a name that doesn't exist
+            FilteredStaffMembers.ReportByName("McLovin");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredStaffMembers.Count);
+        }
+
+        [TestMethod]
+        public void ReportByNameTestDataFound()
+        {
+            //create an instance of the filtered data
+            clsStaffCollection FilteredStaffMembers = new clsStaffCollection();
+            //var to store outcome
+            Boolean OK = true;
+            //apply a name that doesn't exist
+            FilteredStaffMembers.ReportByName("Isaac");
+            //check that the correct number of records are found
+            if (FilteredStaffMembers.Count == 1)
+            {
+                //check that the record is ID 7
+                if (FilteredStaffMembers.StaffList[0].StaffNo != 7)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
+        }
     }
 }

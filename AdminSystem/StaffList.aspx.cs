@@ -24,13 +24,13 @@ public partial class _1_List : System.Web.UI.Page
         //create an instance of the staff collection
         clsStaffCollection StaffMembers = new clsStaffCollection();
         //set the data source to the list of staff in the collection
-        lstStaffMembers.DataSource = StaffMembers.StaffList;
+        lstStaffList.DataSource = StaffMembers.StaffList;
         //set the name of the primary key
-        lstStaffMembers.DataValueField = "StaffNo";
+        lstStaffList.DataValueField = "StaffNo";
         //set the data firl to display
-        lstStaffMembers.DataTextField = "Name";
+        lstStaffList.DataTextField = "Name";
         //bind the data to the list
-        lstStaffMembers.DataBind();
+        lstStaffList.DataBind();
     }
 
     //event handler for the add button
@@ -47,10 +47,10 @@ public partial class _1_List : System.Web.UI.Page
         //var to store the primary key value of the record to be deleted
         Int32 StaffNo;
         //if a record has been selected from the list
-        if (lstStaffMembers.SelectedIndex != -1)
+        if (lstStaffList.SelectedIndex != -1)
         {
             //get the primary key value of the record to edit
-            StaffNo = Convert.ToInt32(lstStaffMembers.SelectedValue);
+            StaffNo = Convert.ToInt32(lstStaffList.SelectedValue);
             //store the data in the session object
             Session["StaffNo"] = StaffNo;
             //redirect to the edit page
@@ -68,10 +68,10 @@ public partial class _1_List : System.Web.UI.Page
         //var to store the primary key value of the record to be edited
         Int32 StaffNo;
         //if a record has been selected from the list
-        if (lstStaffMembers.SelectedIndex != -1)
+        if (lstStaffList.SelectedIndex != -1)
         {
             //get the primary key value of the record to edit
-            StaffNo = Convert.ToInt32(lstStaffMembers.SelectedValue);
+            StaffNo = Convert.ToInt32(lstStaffList.SelectedValue);
             //store the data in the session object
             Session["StaffNo"] = StaffNo;
             //redirect to the edit page
@@ -80,7 +80,37 @@ public partial class _1_List : System.Web.UI.Page
         else //if no record has been selected
         {
             //display an error
-            lblError.Text = "Please select a record to delete from the list";
+            lblError.Text = "Please select a record to edit from the list";
         }
+    }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        //create an instance of the staff collection
+        clsStaffCollection StaffMembers = new clsStaffCollection();
+        StaffMembers.ReportByName(txtFilter.Text);
+        lstStaffList.DataSource = StaffMembers.StaffList;
+        //set the name of the primary key
+        lstStaffList.DataValueField = "StaffNo";
+        //set the name of the field to the display
+        lstStaffList.DataTextField = "Name";
+        //bind the data to the list
+        lstStaffList.DataBind();
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        //create an instance of the staff collection
+        clsStaffCollection StaffMembers = new clsStaffCollection();
+        StaffMembers.ReportByName("");
+        //clear any existing filter to tidy up the interface
+        txtFilter.Text = "";
+        lstStaffList.DataSource = StaffMembers.StaffList;
+        //set the name of the primary key
+        lstStaffList.DataValueField = "StaffNo";
+        //set the name of the field to display
+        lstStaffList.DataTextField = "Name";
+        //bind the data to the list
+        lstStaffList.DataBind();
     }
 }
