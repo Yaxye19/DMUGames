@@ -88,6 +88,7 @@ namespace ClassLibrary
             DB.AddParameter("@CustomerAddress", mThisCustomer.CustomerAddress);
             DB.AddParameter("@DateAdded", mThisCustomer.DateAdded);
             DB.AddParameter("@UsernameAvailability", mThisCustomer.UsernameAvailability);
+            DB.Execute("sproc_tblCustomer_Update");
         }
 
         public void Delete()
