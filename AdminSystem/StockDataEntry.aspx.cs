@@ -30,4 +30,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //navigate to the viewer page 
         Response.Redirect("AddressBookViewer.aspx");
     }
+
+    protected void txtGameAvailability_TextChanged(object sender, EventArgs e)
+    {
+        
+    }
 }

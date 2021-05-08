@@ -25,7 +25,7 @@
             <asp:TextBox ID="txtGamePrice" runat="server"></asp:TextBox>
         </p>
         <asp:Label ID="lblGameAvailability" runat="server" Text="Game Availablilty" width="184px"></asp:Label>
-        <asp:TextBox ID="txtGameAvailability" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtGameAvailability" runat="server" OnTextChanged="txtGameAvailability_TextChanged"></asp:TextBox>
         <p>
             <asp:CheckBox ID="chkActive" runat="server" Text="Active" />
         </p>
