@@ -107,15 +107,32 @@ namespace ClassLibrary
 
         public bool Find(int gameNumber)
         {
-            //set the private data member to the test data value
-            mGameNumber = 21;
-            mGameTitle = " road runner ";
-            mGameDescription = "RUNNING FROM WOLF TO SAVE LIFE" ;
-            mGamePrice = 49;
-            mGameAvailability = true;
-            mDateAdded = Convert.ToDateTime("17/02/2022");
-            //always return true
-            return true;
+            //Create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the address no to search for 
+            DB.AddParameter("@GameNumber", GameNumber);
+            //execute the stored procrdure
+            DB.Execute("sproc_tblStock_FiLterByGameNumber");
+            //if one record is found (there should be either one or zero!)
+            if (DB.Count == 1)
+            {
+
+                //copy the data from the database to the private data members
+                mGameNumber = Convert.ToInt32(DB.DataTable.Rows[0]["GameNumbwe"]);
+                mGameTitle = Convert.ToString(DB.DataTable.Rows[0]["GameDescription"]);
+                mGameDescription = Convert.ToString(DB.DataTable.Rows[0]["GameDescription"]);
+                mGamePrice = Convert.ToInt32(DB.DataTable.Rows[0]["GamePrice"]);
+                mGameAvailability = Convert.ToBoolean(DB.DataTable.Rows[0]["GameAvailability"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
+                //return that everything worked OK
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false indicating a problem 
+                return false;
+            }
         }
     }
 }
